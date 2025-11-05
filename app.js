@@ -12,21 +12,14 @@ dotenv.config();
 
 const app = express();
 const prisma = new PrismaClient();
-const PORT = process.env.PORT || 3004;
+const PORT = process.env.PORT || 3005;
 const JWT_SECRET =
   process.env.JWT_SECRET ||
   "blood-donation-app-secure-fallback-key-2024-must-be-changed";
-// ========================================
-// MIDDLEWARE
-// ========================================
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// ========================================
-// AUTHENTICATION MIDDLEWARE
-// ========================================
 
 const authenticateToken = async (req, res, next) => {
   const authHeader = req.headers["authorization"];
